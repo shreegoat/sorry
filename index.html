@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Ensures proper scaling on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Apology</title>
+  <style>
+    /* Global Body Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      font-family: sans-serif;
+    }
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Heart Shapes and Floating Animation */
+    .heart {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #ff4b5c;
+      transform: rotate(-45deg);
+      animation: floatUp 8s linear infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #ff4b5c;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -20px;
+      left: 0;
+    }
+    .heart::after {
+      top: 0;
+      left: 20px;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(-45deg) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-150vh) rotate(-45deg) scale(0.5);
+        opacity: 0;
+      }
+    }
+    /* Position and delay for each heart */
+    .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .heart:nth-child(2) { left: 20%; animation-delay: 1s; }
+    .heart:nth-child(3) { left: 30%; animation-delay: 2s; }
+    .heart:nth-child(4) { left: 40%; animation-delay: 3s; }
+    .heart:nth-child(5) { left: 50%; animation-delay: 4s; }
+    .heart:nth-child(6) { left: 60%; animation-delay: 5s; }
+    .heart:nth-child(7) { left: 70%; animation-delay: 6s; }
+    .heart:nth-child(8) { left: 80%; animation-delay: 7s; }
+    .heart:nth-child(9) { left: 90%; animation-delay: 8s; }
+
+    /* Apology message that fades in */
+    .apology {
+      font-size: 2rem;
+      color: #000000;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+      animation-delay: 5s;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Forgiveness prompt container */
+    .forgiveness-box {
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+      animation-delay: 7s;
+      color: #000000;
+      font-size: 1.5rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .buttons {
+      margin-top: 10px;
+    }
+    .buttons button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      background-color: #ffffff;
+      color: #ff4b5c;
+    }
+    .buttons button:hover {
+      background-color: rgba(255,255,255,0.8);
+    }
+
+    /* Response text styling */
+    .response-text {
+      margin-top: 15px;
+      font-size: 1.5rem;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    .response-text.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated hearts in the background -->
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+
+  <!-- Apology message -->
+  <div class="apology">I am sorry Aysh</div>
+<br><br><br>
+  <!-- Forgiveness prompt box -->
+  <div class="forgiveness-box">
+    <div>Do you forgive me?</div>
+    <div class="buttons">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+    <div class="response-text" id="responseText"></div>
+  </div>
+
+  <script>
+    // Event listeners for the forgiveness buttons
+    document.getElementById('yesBtn').addEventListener('click', function() {
+      document.getElementById('responseText').textContent = "yayyyyyyyy thank you i love youu ummahhhh 💋";
+      document.getElementById('responseText').classList.add('show');
+    });
+    document.getElementById('noBtn').addEventListener('click', function() {
+      document.getElementById('responseText').textContent = "fuck you, please click yess 🥹";
+      document.getElementById('responseText').classList.add('show');
+    });
+  </script>
+</body>
+</html>
